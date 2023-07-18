@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Laravel\Passport\Http\Controllers\AccessTokenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::prefix('/v1')->group(function (){
 //        Route::post('/login',function (){
 //            return redirect()->route('/token');
 //        })->name('api.auth.login');
+
+        Route::group(['namespace' => '\laravel\Passport\Http\Controllers'] , function (){
+            Route::post('/token',[AccessTokenController::class, 'issueToken'])->name('api.auth.token');
+        });
+
     });
     Route::get('/test',function (){
         return response()->json(User::avg('phone'));

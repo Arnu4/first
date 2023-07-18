@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\Requests\LoginRequest;
 use App\Http\Resources\ResourceInterface;
 use App\Http\Resources\ShowUserResource;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 
@@ -17,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         Passport::ignoreRoutes();
+
+//        App::bind('ServerRequestInterface ', 'LoginRequest ');
     }
 
     /**

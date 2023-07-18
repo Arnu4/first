@@ -57,6 +57,12 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function findForPassport($field){
+//        return response()->json('fdf');
+        $user = static::query()->where('phone')->orWhere('user_name')->orWhere('email')->first();
+        return $user;
+    }
+
 //    public function getPhoneAttribute(){
 //        return (float) $this->phone;
 //    }

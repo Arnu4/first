@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.solar');
 });
 Route::get('auth/google', [GoogleController::class, 'signInWithGoogle']);
 Route::get('callback/google', [GoogleController::class, 'callbackToGoogle']);
